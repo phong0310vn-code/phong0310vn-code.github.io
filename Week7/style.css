@@ -1,0 +1,244 @@
+/* CSS Document */
+body {
+    margin: 0;
+    padding: 0;
+    background: #CCCCCC;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+#wrap {
+    background: #ffffff;
+    margin: 0 auto;
+    width: 900px;
+    height: auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+/* --- HEADER --- */
+header {
+    background: url('header.jpg') no-repeat top center; /* Cần có ảnh header.jpg */
+    background-size: cover;
+    height: 181px;
+    width: 900px; 
+    position: relative;
+}
+
+#logo {
+    padding: 20px 0 0 50px;
+}
+
+#menu_top {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7); /* Nền xám mờ như trong ảnh */
+    height: 40px;
+}
+
+.level1 {
+    margin: 0;
+    padding: 0 0 0 30px;
+    list-style-type: none;
+    position: relative;
+}
+
+.level1 > li {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.level1 li a {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+.level1 li a:hover {
+    color: #339933;
+}
+
+.level2 {
+    display: none;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    background: #f1f1f1;
+    z-index: 100;
+    border: 1px solid #ccc;
+    list-style-type: none;
+    top: 40px;
+}
+
+.level1 li:hover > .level2 {
+    display: block;
+}
+
+.level2 li {
+    float: none;
+    display: block;
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+.level2 li:hover {
+    background: #e1e1e1;
+}
+
+/* --- WELCOME BAR --- */
+#welcome {
+    background: #fff;
+    padding: 8px 15px;
+    border-top: 2px dotted #99cc00;
+    border-bottom: 2px dotted #99cc00;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+}
+
+/* --- MAIN CONTENT --- */
+#main_content {
+    width: 860px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.title {
+    color: #b81f22;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.title img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Cột Trái */
+#left {
+    width: 480px;
+    float: left;
+}
+
+.product {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.product .img {
+    float: left;
+    width: 130px;
+    text-align: center;
+}
+
+.product .description {
+    float: right;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product .name {
+    color: #b81f22;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.product .about {
+    text-align: justify;
+    margin: 0;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Cột Giữa */
+#middle {
+    width: 170px;
+    float: left;
+    margin-left: 20px;
+}
+
+.product_small {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.product_small .name {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.product_small .img {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    display: inline-block;
+}
+
+/* Cột Phải */
+#right {
+    width: 170px;
+    float: right;
+}
+
+.menu_right {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu_right li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #ccc;
+    font-weight: bold;
+}
+
+.menu_right li::before {
+    content: "» ";
+    color: #999;
+}
+
+.menu_right li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.menu_right li a:hover {
+    color: #b81f22;
+}
+
+/* --- FOOTER --- */
+#footer {
+    border-top: 1px dashed #ccc;
+    margin-top: 20px;
+    background: #fff;
+}
+
+.footer-info {
+    padding: 20px;
+}
+
+.left-footer {
+    float: left;
+    color: #666;
+    line-height: 1.5;
+}
+
+.right-footer {
+    float: right;
+}
+
+/* Utility */
+.clear {
+    clear: both;
+}

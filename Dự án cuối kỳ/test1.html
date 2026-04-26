@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao Diện Học Trực Tuyến</title>
+    <style>
+        /* Thiết lập cơ bản để xóa khoảng trắng mặc định */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f3ed; /* Màu nền hơi vàng nhạt giống ảnh */
+            color: #333;
+        }
+
+        /* Sử dụng CSS Grid để chia bố cục 3 cột */
+        .layout-container {
+            display: grid;
+            /* Cột 1: 250px, Cột 2: phần còn lại (1fr), Cột 3: 300px */
+            grid-template-columns: 250px 1fr 300px;
+            /* Hàng 1: 70px (cho header), Hàng 2: tự động co giãn */
+            grid-template-rows: 70px auto;
+            /* Đặt tên các khu vực để dễ sắp xếp */
+            grid-template-areas: 
+                "header header header"
+                "sidebar-left main sidebar-right";
+            height: 100vh;
+            gap: 20px;
+        }
+
+        /* 1. Thanh điều hướng trên cùng */
+        .header {
+            grid-area: header;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* 2. Cột bên trái */
+        .sidebar-left {
+            grid-area: sidebar-left;
+            padding: 20px;
+            background-color: transparent;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        /* 3. Khu vực trung tâm */
+        .main-content {
+            grid-area: main;
+            padding: 20px 0;
+        }
+
+        /* 4. Cột bên phải */
+        .sidebar-right {
+            grid-area: sidebar-right;
+            padding: 20px;
+        }
+
+        /* --- Một số kiểu dáng giả lập cho các phần tử con --- */
+        .mock-search { background: #f0f0f0; padding: 10px 20px; border-radius: 20px; color: #888; }
+        .mock-btn { background: #0056b3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; border: none;}
+        
+        .menu-item { padding: 15px 10px; margin-bottom: 5px; font-weight: bold; color: #555;}
+        
+        .banner { background-color: #1a1a1a; color: white; height: 350px; border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;}
+        
+        .teacher-grid { display: flex; gap: 15px; }
+        .teacher-card { background: #004085; height: 200px; flex: 1; border-radius: 10px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 15px; color: white; }
+
+        .countdown-card { background: #17a2b8; color: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
+        .countdown-card.red { background: #dc3545; }
+        .countdown-card.orange { background: #fd7e14; }
+    </style>
+</head>
+<body>
+
+    <div class="layout-container">
+        
+        <header class="header">
+            <div style="font-weight: bold; font-size: 24px; color: #0056b3;">LOGO</div>
+            <div class="mock-search">🔍 Tìm kiếm...</div>
+            <div>
+                <a href="#" style="margin-right: 15px; color: #333; text-decoration: none;">Đăng ký</a>
+                <button class="mock-btn">Đăng nhập</button>
+            </div>
+        </header>
+
+        <aside class="sidebar-left">
+            <div class="menu-item">🚪 Đăng nhập</div>
+            <div class="menu-item">▶️ Khóa học</div>
+            <div class="menu-item">📊 Thi online</div>
+            <div class="menu-item">⚔️ Đấu trường lý thuyết</div>
+            <div class="menu-item">📚 Sách</div>
+        </aside>
+
+        <main class="main-content">
+            <div class="banner">
+                <h2>ẢNH BANNER KHÓA HỌC SẼ NẰM Ở ĐÂY</h2>
+            </div>
+            
+            <h3 style="margin-bottom: 15px; color: #0056b3;">GIÁO VIÊN</h3>
+            <div class="teacher-grid">
+                <div class="teacher-card">Thầy A</div>
+                <div class="teacher-card">Thầy B</div>
+                <div class="teacher-card">Thầy C</div>
+                <div class="teacher-card">Thầy D</div>
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <h3 style="margin-bottom: 15px; color: #0056b3;">Đếm ngược kỳ thi</h3>
+            <div class="countdown-card">Đếm ngược thi HSA</div>
+            <div class="countdown-card red">Đếm ngược thi TSA</div>
+            <div class="countdown-card orange">Đếm ngược thi THPT QG</div>
+        </aside>
+
+    </div>
+
+</body>
+</html>

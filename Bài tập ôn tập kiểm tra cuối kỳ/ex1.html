@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+    <form id="registrationForm" class="flex-container">
+        <h2>Đăng Ký Hệ Thống</h2>
+
+        <div class="form-group">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" placeholder="5-15 ký tự" required>
+            <small class="error-msg" id="user-error"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" placeholder="Phải có chữ và số" required>
+            
+            <div id="strength-meter">
+                <div class="label-row">
+                    <span>Độ mạnh: <strong id="strength-text">Chưa nhập</strong></span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="profilePic">Ảnh đại diện:</label>
+            <input type="file" id="profilePic" accept=".jpg, .jpeg, .png" required>
+            <small class="hint">Định dạng: JPG, PNG</small>
+        </div>
+
+        <button type="submit" id="submitBtn">Đăng ký ngay</button>
+    </form>
+
+    <script src="script1.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giao diện Tabbed Content</title>
+    <style>
+        /* Bước 3: Định dạng trạng thái Active/Inactive */
+        .tab-container { font-family: Arial, sans-serif; width: 500px; }
+        
+        .tab-header { display: flex; border-bottom: 2px solid #ccc; }
+        
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: #f1f1f1;
+            outline: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Trạng thái tab không hoạt động khi di chuột qua */
+        .tab-button:hover { background-color: #ddd; }
+
+        /* Trạng thái tab đang hoạt động */
+        .tab-button.active {
+            background-color: #fff;
+            border-bottom: 2px solid blue;
+            font-weight: bold;
+        }
+
+        /* Mũi tên mặc định là ẩn, chỉ hiện khi tab active */
+        .arrow { display: none; margin-left: 8px; }
+        .active .arrow { display: inline; }
+
+        /* Định dạng vùng nội dung */
+        .tab-content {
+            display: none; /* Ẩn tất cả mặc định */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Chỉ hiển thị nội dung có class active */
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="tab-container">
+        <!-- Bước 1 & 2: 4 Tabs với Thực thể HTML và Mũi tên -->
+        <div class="tab-header">
+            <button class="tab-button active" onclick="switchTab(event, 'features')">
+                Features &reg; <span class="arrow">&rarr;</span>
+            </button>
+            <button class="tab-button" onclick="switchTab(event, 'pricing')">
+                Pricing &euro; <span class="arrow">&rarr;</span>
+            </button>
+            <button class="tab-button" onclick="switchTab(event, 'reviews')">
+                Reviews <span class="arrow">&rarr;</span>
+            </button>
+            <button class="tab-button" onclick="switchTab(event, 'support')">
+                Support <span class="arrow">&rarr;</span>
+            </button>
+        </div>
+
+        <!-- Vùng chứa nội dung tương ứng -->
+        <div id="features" class="tab-content active">Nội dung các tính năng nổi bật của sản phẩm.</div>
+        <div id="pricing" class="tab-content">Thông tin về các gói giá và ưu đãi hiện có.</div>
+        <div id="reviews" class="tab-content">Đánh giá từ khách hàng đã sử dụng.</div>
+        <div id="support" class="tab-content">Liên hệ đội ngũ hỗ trợ kỹ thuật 24/7.</div>
+    </div>
+
+    <script>
+        // Bước 4: Hàm chuyển đổi Tab
+        function switchTab(event, tabId) {
+            // 1. Lấy tất cả các phần tử nội dung và nút bấm
+            const contents = document.getElementsByClassName('tab-content');
+            const buttons = document.getElementsByClassName('tab-button');
+
+            // 2. Sử dụng classList.remove để xóa trạng thái active cũ
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+
+            // 3. Sử dụng classList.add để kích hoạt tab và nội dung mới
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

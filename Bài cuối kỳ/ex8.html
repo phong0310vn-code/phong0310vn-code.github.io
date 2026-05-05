@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký nhận bản tin</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background-color: #f4f7f6; }
+
+        /* Bước 3: Sử dụng CSS Grid layout cho form */
+        .subscription-form {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr; /* Một cột duy nhất */
+            gap: 20px; /* Khoảng cách giữa các hàng */
+        }
+
+        .grid-item { display: grid; gap: 8px; }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover { background-color: #219150; }
+
+        .error { color: #e74c3c; font-size: 14px; display: none; }
+        #success-msg { color: #27ae60; font-weight: bold; display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>Đăng ký bản tin &bull;</h2>
+
+    <form id="subForm" class="subscription-form">
+        <!-- 1. Họ và tên -->
+        <div class="grid-item">
+            <label for="fullName">Họ và tên:</label>
+            <input type="text" id="fullName" placeholder="Nguyễn Văn A" required>
+        </div>
+
+        <!-- 2. Email -->
+        <div class="grid-item">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="email@vi-du.com">
+            <span id="emailError" class="error">Email không hợp lệ (cần có @ và tên miền).</span>
+        </div>
+
+        <!-- 3. Loại đăng ký (Radio) -->
+        <div class="grid-item">
+            <label>Gói đăng ký:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="plan" value="Monthly" checked> Hàng tháng</label>
+                <label><input type="radio" name="plan" value="Yearly"> Hàng năm</label>
+            </div>
+        </div>
+
+        <!-- 4. Sở thích (Checkboxes) -->
+        <div class="grid-item">
+            <label>Sở thích quan tâm:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="interest" value="Tech"> Công nghệ</label>
+                <label><input type="checkbox" name="interest" value="Business"> Kinh doanh</label>
+                <label><input type="checkbox" name="interest" value="Art"> Nghệ thuật</label>
+            </div>
+            <span id="interestError" class="error">Vui lòng chọn ít nhất một sở thích.</span>
+        </div>
+
+        <button type="button" onclick="validateSubscription()">Đăng ký ngay</button>
+    </form>
+
+    <div id="success-msg">Chúc mừng! Bạn đã đăng ký thành công.</div>
+
+    <script>
+        // Bước 4: Hàm kiểm tra tính hợp lệ
+        function validateSubscription() {
+            // Lấy các phần tử
+            const emailInput = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const interestError = document.getElementById('interestError');
+            const successMsg = document.getElementById('success-msg');
+            
+            // Lấy tất cả các checkbox sở thích đã được chọn
+            const checkedInterests = document.querySelectorAll('input[name="interest"]:checked');
+
+            // Quy tắc 1: Kiểm tra Email (Regex cơ bản cho @ và domain)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const isEmailValid = emailRegex.test(emailInput);
+
+            // Quy tắc 2: Kiểm tra ít nhất 1 sở thích được chọn
+            const isInterestValid = checkedInterests.length > 0;
+
+            // Hiển thị/Ẩn lỗi
+            emailError.style.display = isEmailValid ? 'none' : 'block';
+            interestError.style.display = isInterestValid ? 'none' : 'block';
+
+            // Nếu tất cả hợp lệ
+            if (isEmailValid && isInterestValid) {
+                successMsg.style.display = 'block';
+                document.getElementById('subForm').reset();
+                // Ẩn thông báo sau 3 giây
+                setTimeout(() => { successMsg.style.display = 'none'; }, 3000);
+            } else {
+                successMsg.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

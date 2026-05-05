@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách giá linh kiện</title>
+    <style>
+        /* Bước 4: Định dạng bảng với border và padding */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bảng giá linh kiện máy tính &bull;</h2>
+
+    <!-- Bước 1 & 3: Tạo bảng với 4 linh kiện và các thực thể HTML -->
+    <table id="partsTable">
+        <thead>
+            <tr>
+                <th>Linh kiện</th>
+                <th>Giá (Ước tính)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CPU Intel Core i9 &trade;</td>
+                <td>$500</td>
+            </tr>
+            <tr>
+                <td>Card đồ họa RTX 4090</td>
+                <td>$1600</td>
+            </tr>
+            <tr>
+                <td>RAM DDR5 32GB</td>
+                <td>$120</td>
+            </tr>
+            <tr>
+                <td>SSD Samsung 1TB</td>
+                <td>$100</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&copy; 2024 Cửa hàng công nghệ</p>
+
+    <!-- Bước 5: Nút bấm thay đổi màu -->
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        // Bước 5: Hàm thay đổi màu chữ sang màu đỏ
+        function changeColor() {
+            // Sử dụng getElementById để tìm bảng theo ID
+            var table = document.getElementById("partsTable");
+            // Thay đổi thuộc tính màu sắc trong style
+            table.style.color = "red";
+        }
+    </script>
+
+</body>
+</html>

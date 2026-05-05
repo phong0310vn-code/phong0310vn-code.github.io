@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiệu Sách Trực Tuyến</title>
+    <style>
+        /* Bước 3: Định dạng thanh điều hướng */
+        nav {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        /* Định dạng danh sách menu nằm ngang */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Lớp CSS để ẩn menu */
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chào mừng đến với Bookstore</h1>
+
+    <!-- Bước 3: Nút Toggle Menu -->
+    <button onclick="toggleMenu()">Toggle Menu</button>
+
+    <!-- Bước 1 & 2: Navigation với Thực thể HTML và Dấu chấm -->
+    <nav id="navMenu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>&bull;</li>
+            <li><a href="#">Books &copy;</a></li>
+            <li>&bull;</li>
+            <li><a href="#">Authors &trade;</a></li>
+            <li>&bull;</li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        // Bước 3: Hàm toggleMenu sử dụng classList.toggle
+        function toggleMenu() {
+            // 1. Lấy phần tử menu bằng ID
+            const menu = document.getElementById('navMenu');
+            
+            // 2. Sử dụng classList.toggle để thêm/xóa class "hidden"
+            // Nếu đã có class "hidden" thì xóa đi, nếu chưa có thì thêm vào
+            menu.classList.toggle('hidden');
+        }
+    </script>
+
+</body>
+</html>

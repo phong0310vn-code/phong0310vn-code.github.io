@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính điểm sinh viên</title>
+    <style>
+        /* Bước 4: Định dạng bảng và màu dòng xen kẽ */
+        table {
+            border-collapse: collapse;
+            width: 300px;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        /* Màu dòng xen kẽ (Zebra Stripes) */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bảng điểm học tập &sect;</h2>
+
+    <!-- Bước 1 & 3: Bảng 4 môn học và thực thể HTML -->
+    <table>
+        <thead>
+            <tr>
+                <th>Môn học</th>
+                <th>Điểm số &reg;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lập trình Web</td>
+                <td class="grade">85</td>
+            </tr>
+            <tr>
+                <td>Cơ sở dữ liệu</td>
+                <td class="grade">90</td>
+            </tr>
+            <tr>
+                <td>Mạng máy tính</td>
+                <td class="grade">75</td>
+            </tr>
+            <tr>
+                <td>Cấu trúc dữ liệu</td>
+                <td class="grade">80</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Điều kiện đạt: Điểm &ge; 50</p>
+
+    <!-- Bước 5: Nút tính toán -->
+    <button onclick="calculateAverage()">Calculate Average</button>
+    
+    <div id="result"></div>
+
+    <script>
+        // Bước 5: Hàm tính điểm trung bình
+        function calculateAverage() {
+            // Sử dụng querySelectorAll để lấy tất cả các ô có class 'grade'
+            const grades = document.querySelectorAll('.grade');
+            let total = 0;
+            
+            // Lặp qua danh sách các ô điểm
+            grades.forEach(function(item) {
+                // Chuyển nội dung văn bản thành số và cộng dồn
+                total += parseFloat(item.textContent);
+            });
+            
+            // Tính trung bình
+            const average = total / grades.length;
+            
+            // Hiển thị kết quả
+            document.getElementById('result').innerText = "Điểm trung bình là: " + average;
+        }
+    </script>
+
+</body>
+</html>

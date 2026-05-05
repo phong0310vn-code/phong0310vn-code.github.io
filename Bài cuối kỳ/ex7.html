@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Liên Hệ</title>
+    <style>
+        /* Bước 3: Định dạng biểu mẫu với khoảng cách và đường viền */
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        .contact-form {
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Tạo khoảng cách giữa các trường */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Đảm bảo padding không làm tràn chiều rộng */
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover { background-color: #2980b9; }
+
+        #messageBox {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Liên hệ với chúng tôi</h2>
+
+    <!-- Bước 1 & 2: Cấu trúc Form và Label -->
+    <div class="contact-form">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" placeholder="Nhập tên của bạn">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="example@mail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Lời nhắn:</label>
+                <textarea id="message" rows="4" placeholder="Nhập nội dung..."></textarea>
+            </div>
+
+            <button type="button" onclick="validateForm()">Gửi tin nhắn</button>
+        </form>
+        
+        <!-- Nơi hiển thị thông báo -->
+        <div id="messageBox"></div>
+    </div>
+
+    <script>
+        // Bước 4: Hàm kiểm tra tính hợp lệ (Validation)
+        function validateForm() {
+            // Lấy giá trị từ các ô nhập liệu
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const messageBox = document.getElementById('messageBox');
+
+            // Kiểm tra nếu có trường nào bị bỏ trống
+            if (name === "" || email === "" || message === "") {
+                messageBox.style.color = "red";
+                messageBox.innerText = "Vui lòng điền đầy đủ tất cả các trường!";
+            } else {
+                // Nếu tất cả đã được điền
+                messageBox.style.color = "green";
+                messageBox.innerText = "Cảm ơn bạn! Tin nhắn đã được gửi thành công.";
+                
+                // (Tùy chọn) Xóa trắng form sau khi gửi thành công
+                document.getElementById('myForm').reset();
+            }
+        }
+    </script>
+
+</body>
+</html>

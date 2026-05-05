@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực đơn nhà hàng</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; }
+        .menu-section { margin-bottom: 20px; }
+        .menu-item { 
+            padding: 5px 0; 
+            border-bottom: 1px dashed #ccc;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #2c3e50; display: inline-block; }
+        .vegetarian { color: green; font-style: italic; }
+        button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Nhà hàng Lập Trình &reg;</h1>
+
+    <!-- Phần 1: Các mục thực đơn và Thực thể HTML -->
+    <div class="menu-section">
+        <h2>Appetizers &reg;</h2>
+        <div class="menu-item vegetarian">Súp rau củ <span>&ge; $5</span></div>
+        <div class="menu-item non-veg">Cánh gà chiên <span>&ge; $8</span></div>
+    </div>
+
+    <div class="menu-section">
+        <h2>Main Course &sect;</h2>
+        <div class="menu-item non-veg">Bít tết bò <span>&ge; $25</span></div>
+        <div class="menu-item vegetarian">Mỳ Ý sốt kem nấm <span>&ge; $15</span></div>
+    </div>
+
+    <div class="menu-section">
+        <h2>Desserts</h2>
+        <div class="menu-item vegetarian">Trái cây mùa hè <span>&ge; $6</span></div>
+        <div class="menu-item non-veg">Bánh Pudding trứng <span>&ge; $7</span></div>
+    </div>
+
+    <div class="menu-section">
+        <h2>Drinks</h2>
+        <div class="menu-item vegetarian">Nước ép cam <span>&ge; $4</span></div>
+        <div class="menu-item vegetarian">Trà thảo mộc <span>&ge; $3</span></div>
+    </div>
+
+    <!-- Bước 3: Nút lọc thực đơn -->
+    <button onclick="filterMenu()">Filter Menu (Vegetarian Only)</button>
+
+    <script>
+        let showOnlyVeg = false;
+
+        function filterMenu() {
+            // Sử dụng getElementsByClassName để tìm tất cả các món không phải đồ chay
+            const nonVegItems = document.getElementsByClassName('non-veg');
+            
+            showOnlyVeg = !showOnlyVeg; // Đảo ngược trạng thái lọc mỗi lần bấm nút
+
+            for (let i = 0; i < nonVegItems.length; i++) {
+                if (showOnlyVeg) {
+                    // Ẩn các món mặn
+                    nonVegItems[i].style.display = 'none';
+                } else {
+                    // Hiện lại tất cả
+                    nonVegItems[i].style.display = 'flex';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
